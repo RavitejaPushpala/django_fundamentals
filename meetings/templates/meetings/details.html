@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ meeting.title }}</title>
+  </head>
+  <body>
+    <h1>{{ meeting.title }}</h1>
+    <p>
+      This meeting has been scheduled on {{ meeting.date }}, at {{
+      meeting.start_time }} in room {{ meeting.room }}
+    </p>
+    <h2>Participants</h2>
+    <ul>
+      {% for participant in meeting.participants.all %}
+      <li>{{ participant.username }}</li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'edit' meeting.id %}">change this meeting</a>
+    <a href="{% url 'delete' meeting.id %}">delete this meeting"></a>
+    <a href="{% url 'welcome' %}">Home</a>
+  </body>
+</html>
